@@ -3,10 +3,12 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { ConverterOutputCardComponent } from './converter-output-card/converter-output-card.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ConverterOutputCardComponent
   ],
   imports: [
     BrowserModule,
