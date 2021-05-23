@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ConverterService } from './converter.service';
 
 @Component({
   selector: 'app-converter-output-card',
@@ -6,10 +7,44 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./converter-output-card.component.scss']
 })
 export class ConverterOutputCardComponent implements OnInit {
-
-  constructor() { }
+  currencies: string[] = [];
+  latestExchangeRates : any;
+  symbols: any;
+  baseCurrency: string = "EUR";
+  resultCurrency: string = "TRY";
+  baseValue: number = 0;
+  resultValue: number = 0;
+  constructor(private converterService: ConverterService) { }
 
   ngOnInit(): void {
+    this.getLatestExchangeRates(1);
+    this.getLatestExchangeSymbols();
+  }
+
+  getLatestExchangeRates(direction: number) {
+    this.converterService.getLatestExchangeRates(this.baseCurrency).subscribe(res => {
+      this.currencies = Object.keys(res.rates);
+      this.latestExchangeRates = res.rates;
+      if (direction === 1) {
+        this.convert();
+      } else {
+        this.reverseConvert();
+      }
+    });
+  }
+
+  getLatestExchangeSymbols() {
+    this.converterService.getLatestExchangeSymbols().subscribe(res => {
+      this.symbols = res.symbols;
+    });
+  }
+
+  convert() {
+    this.resultValue = this.latestExchangeRates[this.resultCurrency] * this.baseValue;
+  }
+
+  reverseConvert() {
+    this.baseValue = this.resultValue / this.latestExchangeRates[this.resultCurrency] ;
   }
 
 }

@@ -1,18 +1,34 @@
 <div class="convertor-card">
   <div class="base">
-      <span class="name">US Dollar</span>
+      <span class="name">{{symbols[baseCurrency]}}</span>
       <div class="value-section">
-          <span class="value">271</span>
-          <span class="symbol">$</span>
+        <mat-form-field appearance="fill" class="baseValue">
+          <input matInput type="number" class="example-right-align" [(ngModel)]="baseValue" (ngModelChange)="convert()">
+        </mat-form-field>
       </div>
-      <span class="abbr">USD</span>
+      <mat-form-field appearance="outline" class="currency-select">
+        <mat-label>From</mat-label>
+        <mat-select [(ngModel)]="baseCurrency" (ngModelChange)="getLatestExchangeRates(2)">
+          <mat-option *ngFor="let currency of currencies" [value]="currency">
+            {{currency}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
   </div>
   <div class="converted">
-      <span class="name">Russian Ruble</span>
+      <span class="name">{{symbols[resultCurrency]}}</span>
       <div class="value-section">
-          <span class="value">15.58</span>
-          <span class="symbol">P</span>
+        <mat-form-field appearance="fill" class="baseValue">
+          <input matInput type="number" class="example-right-align" [(ngModel)]="resultValue" (ngModelChange)="reverseConvert()">
+        </mat-form-field>
       </div>
-      <span class="abbr">RUB</span>
+      <mat-form-field appearance="outline" class="currency-select">
+        <mat-label>To</mat-label>
+        <mat-select [(ngModel)]="resultCurrency" (ngModelChange)="getLatestExchangeRates(1)">
+          <mat-option *ngFor="let currency of currencies" [value]="currency">
+            {{currency}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
   </div>
 </div>
