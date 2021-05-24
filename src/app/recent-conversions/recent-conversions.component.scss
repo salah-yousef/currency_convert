@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css?family=Lato:300|Noto+Sans|Roboto+Mono:300');
+@import url('https://use.fontawesome.com/releases/v5.2.0/css/all.css');
+
+$background-color: #fee2e2;
+$symbol-color: #fd9b9b;
+$base-background: #fc5154;
+$converted-background: #010c50;
+$border-radius: 2vmin;
+$card-vertical-padding: 2vmin;
+$padding-with-pseudo: calc(17% + #{$card-vertical-padding});
+$base-after-dimension: 17vmin;
+$base-converted-difference: 2vmin;
+
+@mixin pseudo-style($height-and-width, $background-color, $z-index) {
+  content: '';
+  height: $height-and-width;
+  width: $height-and-width;
+  border-radius: 100%;
+  background-color: $background-color;
+  border-radius: 50%;
+  border-top-color: transparent;
+  border-left-color: transparent;
+  position: absolute;
+  transform: translateY(-50%) rotate(-45deg);
+  z-index: $z-index;
+}
+
+.convertor-card {
+  height: 80vmin;
+  width: 70vmin;
+  display: grid;
+  grid-template-rows: repeat(1, 1fr);
+  grid-template-columns: 1fr;
+  border-radius: 2px;
+}
+
+.base {
+  grid-column: 1 / 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 4vmin;
+  position: relative;
+  flex-direction: column;
+  grid-row: 1 / 1;
+  padding-top: $card-vertical-padding;
+  padding-bottom: $padding-with-pseudo;
+  background: $base-background;
+  color: $converted-background;
+  border-radius: $border-radius;
+}
+
+.mat-chip-list-wrapper input.mat-input-element, .mat-chip-list-wrapper .mat-standard-chip {
+  margin: 4px;
+}
+.mat-standard-chip {
+  transition: box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1);
+  display: inline-flex;
+  padding: 0 12px;
+  margin: 0 3px;
+  border-radius: 16px;
+  align-items: center;
+  cursor: default;
+  min-height: 32px;
+  height: 1px;
+}
+
+.mat-chip {
+  width: 100%;
+}

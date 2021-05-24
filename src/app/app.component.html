@@ -1,1 +1,9 @@
-<app-converter-output-card></app-converter-output-card>
+<div class="main">
+  <button *ngIf="currentRoute === '/'" mat-fab color="primary" aria-label="Example icon button with a bookmark icon" [routerLink]="['/recent-conversions']">
+    <mat-icon>bookmark</mat-icon>
+  </button>
+  <button *ngIf="currentRoute === '/recent-conversions'" mat-fab color="primary" aria-label="Example icon button with a home icon" [routerLink]="['/']">
+    <mat-icon>home</mat-icon>
+  </button>
+  <router-outlet></router-outlet>
+</div>

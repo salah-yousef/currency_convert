@@ -3,7 +3,7 @@
       <span class="name">{{symbols?.baseCurrency}}</span>
       <div class="value-section">
         <mat-form-field appearance="fill" class="baseValue">
-          <input matInput type="number" class="example-right-align" [(ngModel)]="baseValue" (ngModelChange)="convert()">
+          <input matInput type="number" class="example-right-align" [(ngModel)]="baseValue" (ngModelChange)="convert()" (blur)="saveConversion()">
         </mat-form-field>
       </div>
       <mat-form-field appearance="outline" class="currency-select">
@@ -19,7 +19,7 @@
       <span class="name">{{symbols?.resultCurrency}}</span>
       <div class="value-section">
         <mat-form-field appearance="fill" class="baseValue">
-          <input matInput type="number" class="example-right-align" [(ngModel)]="resultValue" (ngModelChange)="reverseConvert()">
+          <input matInput type="number" class="example-right-align" [(ngModel)]="resultValue" (ngModelChange)="reverseConvert()" (blur)="saveConversion()">
         </mat-form-field>
       </div>
       <mat-form-field appearance="outline" class="currency-select">

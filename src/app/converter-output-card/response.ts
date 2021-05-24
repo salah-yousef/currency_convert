@@ -5,3 +5,11 @@ export interface Response {
   date: string;
   rates: any;
 }
+
+export interface Conversion {
+  resultValue: number;
+  baseValue: number;
+  resultCurrency: string;
+  baseCurrency: string;
+  date: string;
+}

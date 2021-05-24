@@ -1,0 +1,14 @@
+<div class="convertor-card">
+  <div class="base">
+    <mat-list role="list">
+      <mat-list-item role="listitem" *ngFor="let item of recentConversions">
+         <mat-chip color="accent" selected>
+           ({{item.date | date:'short'}}):
+           {{item.resultValue | number}} {{item.resultCurrency}}
+           =
+           {{item.baseValue | number}} {{item.baseCurrency}}
+          </mat-chip>
+      </mat-list-item>
+    </mat-list>
+  </div>
+</div>

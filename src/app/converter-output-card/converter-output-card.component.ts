@@ -14,6 +14,7 @@ export class ConverterOutputCardComponent implements OnInit {
   resultCurrency: string = "TRY";
   baseValue: number = 0;
   resultValue: number = 0;
+  currectDate = '';
   constructor(private converterService: ConverterService) { }
 
   ngOnInit(): void {
@@ -45,6 +46,18 @@ export class ConverterOutputCardComponent implements OnInit {
 
   reverseConvert() {
     this.baseValue = this.resultValue / this.latestExchangeRates[this.resultCurrency] ;
+  }
+
+  saveConversion() {
+    if (this.resultValue > 0 && this.baseValue > 0) {
+      this.converterService.recentConversions.push({
+        resultValue: this.resultValue,
+        baseValue: this.baseValue,
+        resultCurrency: this.resultCurrency,
+        baseCurrency: this.baseCurrency,
+        date: new Date().toString()
+      });
+    }
   }
 
 }

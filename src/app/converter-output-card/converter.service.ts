@@ -1,7 +1,7 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
-import { Response } from "./response";
+import { Conversion, Response } from "./response";
 import { catchError } from 'rxjs/operators';
 import {MatSnackBar} from '@angular/material/snack-bar';
 
@@ -9,7 +9,7 @@ import {MatSnackBar} from '@angular/material/snack-bar';
   providedIn: 'root'
 })
 export class ConverterService {
-
+  recentConversions: Conversion[] = [];
   constructor(private http: HttpClient, private _snackBar: MatSnackBar) { }
 
   getLatestExchangeRates(baseCurrency: string): Observable<Response> {
