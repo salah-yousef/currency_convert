@@ -1,6 +1,6 @@
 <div class="convertor-card">
   <div class="base">
-      <span class="name">{{symbols[baseCurrency]}}</span>
+      <span class="name">{{symbols?.baseCurrency}}</span>
       <div class="value-section">
         <mat-form-field appearance="fill" class="baseValue">
           <input matInput type="number" class="example-right-align" [(ngModel)]="baseValue" (ngModelChange)="convert()">
@@ -16,7 +16,7 @@
       </mat-form-field>
   </div>
   <div class="converted">
-      <span class="name">{{symbols[resultCurrency]}}</span>
+      <span class="name">{{symbols?.resultCurrency}}</span>
       <div class="value-section">
         <mat-form-field appearance="fill" class="baseValue">
           <input matInput type="number" class="example-right-align" [(ngModel)]="resultValue" (ngModelChange)="reverseConvert()">
